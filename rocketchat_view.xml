@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <record id="view_rocketchat_server_tree" model="ir.ui.view">
+            <field name="name">rocketchat.server.list</field>
+            <field name="model">rocketchat.server</field>
+            <field name="arch" type="xml">
+                <tree string="Rocket.Chat Servers">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="action_rocketchat_server_tree" model="ir.actions.act_window">
+            <field name="name">Rocket.Chat Servers</field>
+            <field name="res_model">rocketchat.server</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_rocketchat_server_tree"/>
+        </record>
+
+        <menuitem
+            parent="base.menu_email"
+            id="menu_action_rocketchat_server_tree"
+            action="action_rocketchat_server_tree"
+            name="Rocket.Chat Servers"
+            sequence="100"
+            groups="base.group_no_one"
+        />
+
+
+    <record id="rocketchat_res_users_form" model="ir.ui.view">
+        <field name="name">rocketchat.res.users.form</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form"/>
+        <field name="arch" type="xml">
+		<notebook>
+			<page string="Rocket.Chat">
+				<group>
+					<field name="rocketchat_server_id" />
+					<field name="rocketchat_user" />
+					<field name="rocketchat_pwd" />
+					<field name="rocketchat_channel" />
+				</group>
+			</page>
+		</notebook>
+        </field>
+    </record>
+
+
+</odoo>
+
